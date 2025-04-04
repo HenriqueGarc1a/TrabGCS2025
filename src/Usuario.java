@@ -1,14 +1,17 @@
 public class Usuario {
+    private static int idgenerator = 0;
     private int id;
     private String nome;
     private boolean adm;
     private TipoFunc func;
 
-    public Usuario(int id,String nome, boolean adm, TipoFunc func){
-        this.id = id;
+    public Usuario(String nome, boolean adm, TipoFunc func){
+       
+        this.id = idgenerator;
         this.nome = nome;   
         this.adm = adm;
         this.func = func;
+        idgenerator++;
     }
     public String getNome(){
         return nome;
