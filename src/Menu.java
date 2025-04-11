@@ -27,6 +27,17 @@ public class Menu{
 
     }
 
+    private void clear(){
+
+        int x = 0 ;
+        while (x <100) {
+
+            System.out.println();
+            x++;
+        }
+
+    }
+
     public void menuR(){
 
         initFunc();
@@ -52,6 +63,7 @@ public class Menu{
          System.out.println("9-Ver estatisticas (Somente Admin)");
 
          }
+
          System.out.println("10-Fechar app");
 
          if(in.hasNextInt()){
@@ -65,7 +77,7 @@ public class Menu{
             case 1:
               break;
             case 2:
-
+                clear();
                 mostraFunc();
                 try {
                     atual = funcionarios.get(in.nextInt());
@@ -95,7 +107,9 @@ public class Menu{
              System.out.println("Opção Invalida, por favor informe um numero valido");
              System.out.println();
          }
-        
+         
+         clear();
+
         }
 
         in.close();
