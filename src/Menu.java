@@ -1,9 +1,14 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.time.LocalDate;
+import java.time.DayOfWeek;
+import java.time.format.TextStyle;
+import java.util.Locale;
 
 public class Menu{
 
     private ArrayList<Usuario> funcionarios = new ArrayList<>();
+    private Usuario atual;
 
     private void initFunc(){
 
@@ -38,13 +43,35 @@ public class Menu{
 
     }
 
+    private void addPedido(Item item){
+
+        LocalDate hoje = LocalDate.now();
+        atual.adicionarPedido(new Pedido(hoje, item));
+
+    }
+
+    private void mostraPedido(){
+
+        for(int i = 0;i<funcionarios.size();i++){
+            
+            for(int j = 0;j<funcionarios.get(i).getListaPedidosAprovados().size();j++){
+
+                System.out.println(funcionarios.get(i).getListaPedidosAprovados().get(j));
+
+            }
+        }
+
+
+
+    }
+
     public void menuR(){
 
         initFunc();
 
         int temp = 0;
         Scanner in = new Scanner(System.in);
-        Usuario atual = funcionarios.get(0);
+        atual = funcionarios.get(0);
 
         while(temp != 10){
          System.out.print("----Menu---- ");
@@ -75,8 +102,20 @@ public class Menu{
 
          switch(temp){
             case 1:
+                    System.out.println(1);
+                    String nome = in.nextLine();
+                    System.out.println(2);
+                    double valor = in.nextDouble();
+                    System.out.println(3);
+                    double quant = in.nextDouble();
+                    System.out.println(4);
+                    String def = in.nextLine();
+
+                    addPedido(new Item(nome, valor, def, quant));
+             
               break;
             case 2:
+
                 clear();
                 mostraFunc();
                 try {
@@ -92,6 +131,9 @@ public class Menu{
             case 4:
              break;
             case 5:
+                clear();
+                mostraPedido();
+                in.next();
              break;
             case 6:
              break;

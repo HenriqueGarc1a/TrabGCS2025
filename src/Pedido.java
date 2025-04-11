@@ -1,26 +1,20 @@
-import java.util.ArrayList;
+import java.time.LocalDate;
+import java.time.DayOfWeek;
+import java.time.format.TextStyle;
+import java.util.Locale;
 
-public class Pedido {
+class Pedido {
 
-    private Usuario user;
     private Dep departamento;
-    private String data,dataconclusao;
+    private LocalDate data,dataconclusao;
     private Status status;
-    private ArrayList<Item> items;
+    Item items;
 
-    public Pedido(Usuario user,String data,ArrayList<Item> items){
+    public Pedido(LocalDate data,Item item){
 
-        this.user = user;
-        this.departamento = this.user.getFunc();
         this.data = data;
         this.status = Status.aberto;
-        this.items = items;
-
-    }
-
-    public Usuario getUser(){
-
-        return this.user;
+        this.items = item;
 
     }
 
@@ -36,22 +30,29 @@ public class Pedido {
 
     }
 
-    public String getData(){
+    public LocalDate getData(){
 
         return this.data;
 
     }
 
-    public String getDataEnd(){
+    public LocalDate getDataEnd(){
 
         return this.dataconclusao;
 
     }
 
-    public ArrayList<Item> getItems(){
+    public Item getItems(){
 
         return this.items;
         
+    }
+
+    public String toString(){
+
+        return this.data.toString();
+
+
     }
 
 

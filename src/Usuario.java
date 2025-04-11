@@ -14,6 +14,7 @@ public class Usuario {
         this.nome = nome;   
         this.adm = adm;
         this.func = func;
+        listaPedidosAprovados = new ArrayList<>();
         idgenerator++;
     }
 
