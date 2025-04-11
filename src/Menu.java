@@ -16,6 +16,17 @@ public class Menu{
 
     }
 
+    private void mostraFunc(){
+
+        for(int i =0;i<funcionarios.size();i++){
+
+            System.out.println(i+ ":"+funcionarios.get(i).getNome());
+
+        }
+
+
+    }
+
     public void menuR(){
 
         initFunc();
@@ -31,12 +42,16 @@ public class Menu{
          System.out.println("1-Registrar um novo pedido");
          System.out.println("2-Alterar o Usuario do sistema");
          System.out.println("3-Remover um pedido existente(Somente Usuario Solicitante)");
+         
+         if(atual.getAdm()){
          System.out.println("4-Aprovar ou Rejeitar pedidos(Somente Admin)");
          System.out.println("5-Listar pedidos entre duas datas(Somente Admin)");
          System.out.println("6-Buscar pedidos por Usuario solicitante(Somente Admin)");
          System.out.println("7-Buscar pedido por descrição de item(Somente Admin)");
          System.out.println("8-Visualizar detalhes de um pedido(Somente Admin)");
          System.out.println("9-Ver estatisticas (Somente Admin)");
+
+         }
          System.out.println("10-Fechar app");
 
          if(in.hasNextInt()){
@@ -50,14 +65,16 @@ public class Menu{
             case 1:
               break;
             case 2:
+
+                mostraFunc();
                 try {
                     atual = funcionarios.get(in.nextInt());
                 } catch (Exception e) {
 
                 }
                 
-
-             break;
+                break;
+                
             case 3:
              break;
             case 4:
