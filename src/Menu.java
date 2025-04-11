@@ -136,6 +136,18 @@ public class Menu{
                 break;
                 
             case 3:
+            System.out.println("Informe o pedido a ser removido:");
+            int count = 1;
+            for(int i = 0; i<(atual.getListaPedidosAprovados()).size(); i++){
+                System.out.println("\n"+count+"- "+((atual.getListaPedidosAprovados()).get(i)).getItems());
+            }
+            int deletado = in.nextInt()-1;
+            if((atual.getListaPedidosAprovados()).get(deletado)!= null){
+                atual.getListaPedidosAprovados().remove(deletado);
+            System.out.println("Pedido removido com sucesso");
+            }else{
+                System.out.println("Numero de pedido Invalido");
+            }
              break;
             case 4:
              break;
