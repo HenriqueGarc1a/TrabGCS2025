@@ -7,13 +7,15 @@ public class Usuario {
     private boolean adm;
     private Dep func;
     private ArrayList<Pedido> listaPedidosAprovados;
+    private String iniciais;
 
-    public Usuario(String nome, boolean adm, Dep func){
+    public Usuario(String nome, boolean adm, Dep func, String iniciais){
        
         this.id = idgenerator;
         this.nome = nome;   
         this.adm = adm;
         this.func = func;
+        this.iniciais = iniciais;
         idgenerator++;
     }
 

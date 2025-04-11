@@ -7,12 +7,21 @@ public class Menu{
 
     private void initFunc(){
 
-        funcionarios.add(new Usuario("Pedro",true,Dep.Diretoria));
-        funcionarios.add(new Usuario("Joao", false,Dep.Contabilidade));
-        funcionarios.add(new Usuario("Janaina", false, Dep.RH));
-        funcionarios.add(new Usuario("Taison", false, Dep.Engenharia));
-        funcionarios.add(new Usuario("Samanta", false, Dep.Financeiro));
-        funcionarios.add(new Usuario("Gilson", false, Dep.Manutenção));
+        funcionarios.add(new Usuario("Pedro Antonio",true,Dep.Diretoria, "PA"));
+        funcionarios.add(new Usuario("Joao Cruz", false,Dep.Contabilidade, "JC"));
+        funcionarios.add(new Usuario("Janaina Souza", false, Dep.RH, "JS"));
+        funcionarios.add(new Usuario("Mike Taison", false, Dep.Engenharia, "MT"));
+        funcionarios.add(new Usuario("Samanta Silva", false, Dep.Financeiro, "SS"));
+        funcionarios.add(new Usuario("Gilson Moreira", false, Dep.Manutenção, "GM"));
+        funcionarios.add(new Usuario("Filipe Roman", false, Dep.Contabilidade, "FR"));
+        funcionarios.add(new Usuario("Henrique Garcia", true, Dep.Diretoria, "HG"));
+        funcionarios.add(new Usuario("Irving Mallet", false, Dep.RH, "IM"));
+        funcionarios.add(new Usuario("Gabriella Schmidt", true, Dep.Engenharia, "GS"));
+        funcionarios.add(new Usuario("Michael Mora", true, Dep.Diretoria, "MM"));
+        funcionarios.add(new Usuario("Matheus Granja", false, Dep.Financeiro,"MG"));
+        funcionarios.add(new Usuario("Antonio Castilhos", false, Dep.Engenharia, "AC"));
+        funcionarios.add(new Usuario("Marco Aurelio", true, Dep.Financeiro, "MA"));
+        funcionarios.add(new Usuario("Neymar Junior", false, Dep.RH, "NJ"));
 
     }
 
