@@ -5,10 +5,10 @@ public class Usuario {
     private int id;
     private String nome;
     private boolean adm;
-    private TipoFunc func;
+    private Dep func;
     private ArrayList<Pedido> listaPedidosAprovados;
 
-    public Usuario(String nome, boolean adm, TipoFunc func){
+    public Usuario(String nome, boolean adm, Dep func){
        
         this.id = idgenerator;
         this.nome = nome;   
@@ -21,7 +21,7 @@ public class Usuario {
         return nome;
     }
 
-    public TipoFunc getFunc(){
+    public Dep getFunc(){
         return func;
     }
 
@@ -45,7 +45,7 @@ public class Usuario {
         this.adm = temp;
     }
 
-    public void setFunc(TipoFunc temp){
+    public void setFunc(Dep temp){
         this.func = temp;
     }
 

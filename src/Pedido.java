@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Pedido {
 
     private Usuario user;
-    private TipoFunc departamento;
+    private Dep departamento;
     private String data,dataconclusao;
     private Status status;
     private ArrayList<Item> items;
@@ -24,7 +24,7 @@ public class Pedido {
 
     }
 
-    public TipoFunc getDep(){
+    public Dep getDep(){
 
         return this.departamento;
 

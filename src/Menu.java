@@ -1,10 +1,32 @@
+import java.util.ArrayList;
 import java.util.Scanner;
+
 public class Menu{
+
+    private ArrayList<Usuario> funcionarios = new ArrayList<>();
+
+    private void initFunc(){
+
+        funcionarios.add(new Usuario("Pedro",true,Dep.Diretoria));
+        funcionarios.add(new Usuario("Joao", false,Dep.Contabilidade));
+        funcionarios.add(new Usuario("Janaina", false, Dep.RH));
+        funcionarios.add(new Usuario("Taison", false, Dep.Engenharia));
+        funcionarios.add(new Usuario("Samanta", false, Dep.Financeiro));
+        funcionarios.add(new Usuario("Gilson", false, Dep.Manutenção));
+
+    }
+
     public void menuR(){
+
+        initFunc();
+
         int temp = 0;
         Scanner in = new Scanner(System.in);
+        Usuario atual = funcionarios.get(0);
+
         while(temp != 10){
-         System.out.println("----Menu----");
+         System.out.print("----Menu---- ");
+         System.out.println("Bom dia "+atual.getNome());
          System.out.println("Informe a tarefa que deseja realizar");
          System.out.println("1-Registrar um novo pedido");
          System.out.println("2-Alterar o Usuario do sistema");
@@ -28,6 +50,13 @@ public class Menu{
             case 1:
               break;
             case 2:
+                try {
+                    atual = funcionarios.get(in.nextInt());
+                } catch (Exception e) {
+
+                }
+                
+
              break;
             case 3:
              break;
@@ -49,7 +78,12 @@ public class Menu{
              System.out.println("Opção Invalida, por favor informe um numero valido");
              System.out.println();
          }
-         in.close();
+        
         }
+
+        in.close();
     }
+
+
+
 }
