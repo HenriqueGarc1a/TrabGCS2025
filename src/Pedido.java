@@ -1,20 +1,19 @@
 import java.time.LocalDate;
-import java.time.DayOfWeek;
-import java.time.format.TextStyle;
-import java.util.Locale;
 
 class Pedido {
 
     private Dep departamento;
     private LocalDate data,dataconclusao;
     private Status status;
-    Item items;
+    private Usuario usuarioRequisitante;
+    private Item items;
 
-    public Pedido(LocalDate data,Item item){
+    public Pedido(LocalDate data,Item item, Usuario usuarioRequisitante){
 
         this.data = data;
         this.status = Status.aberto;
         this.items = item;
+        this.usuarioRequisitante = usuarioRequisitante;
 
     }
 
@@ -53,6 +52,9 @@ class Pedido {
         return this.data.toString();
 
 
+    }
+    public Usuario getUsuarioRequisitante(){
+        return this.usuarioRequisitante;
     }
 
 

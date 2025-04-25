@@ -59,5 +59,9 @@ public class Usuario {
     public void adicionarPedido(Pedido pedido){
         listaPedidosAprovados.add(pedido);
     }
-
+    public void deletarPedido(int index, Usuario r){
+        if (listaPedidosAprovados.get(index).getUsuarioRequisitante()==r) {
+           listaPedidosAprovados.remove(index); 
+        }
+    }
 }

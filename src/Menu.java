@@ -1,9 +1,6 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.time.LocalDate;
-import java.time.DayOfWeek;
-import java.time.format.TextStyle;
-import java.util.Locale;
 
 public class Menu{
 
@@ -52,10 +49,10 @@ public class Menu{
 
     }
 
-    private void addPedido(Item item){
+    private void addPedido(Item item, Usuario usuarioRequisitante){
 
         LocalDate hoje = LocalDate.now();
-        atual.adicionarPedido(new Pedido(hoje, item));
+        atual.adicionarPedido(new Pedido(hoje, item, usuarioRequisitante));
 
     }
 
@@ -111,28 +108,72 @@ public class Menu{
 
          switch(temp){
             case 1:
+                    double valor,quant;
+                    valor = 0;
+                    quant = 0;
                     System.out.println(1);
                     String nome = in.nextLine();
                     System.out.println(2);
-                    double valor = in.nextDouble();
+                    int l=0;
+                    while(l<1){
+                    try {
+                        String entrada =in.nextLine();
+                        valor = Double.parseDouble(entrada);
+                        l++;
+                    } catch (NumberFormatException e) {
+                        System.out.println("Valor invalido, insira um numero correto");
+                    }
+                    }
                     System.out.println(3);
-                    double quant = in.nextDouble();
+                    l=0;
+                    while(l<1){
+                    try {
+                        String entrada =in.nextLine();
+                        quant = Double.parseDouble(entrada);
+                        l++;
+                    } catch (NumberFormatException e) {
+                        System.out.println("Quantidade invalida, insira um numero correto");
+                    }
+                    }
                     System.out.println(4);
                     String def = in.nextLine();
-
-                    addPedido(new Item(nome, valor, def, quant));
-             
+                    int kjkj=0;
+                    int usuarioReq=0;
+                    Usuario abdais=null;
+                    while(kjkj<1){
+                        System.out.println("informe o usuario requisitante:");
+                        try {
+                         String entradaS = in.nextLine();
+                         usuarioReq = Integer.parseInt(entradaS);                            
+                        } catch (NumberFormatException e) {
+                            System.out.println("Usuario Invalido");
+                        }
+                      if(usuarioReq<funcionarios.size()){
+                        abdais= funcionarios.get(usuarioReq);
+                        kjkj++;
+                      }else{
+                        System.out.println("Usuario Invalido");
+                      }
+                    }
+                    addPedido(new Item(nome, valor, def, quant),abdais);
               break;
             case 2:
 
                 clear();
                 mostraFunc();
-                try {
-                    atual = funcionarios.get(in.nextInt());
-                } catch (Exception e) {
-
+                String abacaxi="";
+                int k=0;
+                int asijo=0;
+                while (asijo<1) { 
+                    try {
+                        abacaxi=in.nextLine();
+                        k=Integer.parseInt(abacaxi);
+                        atual = funcionarios.get(k);
+                        asijo++;
+                    } catch (NumberFormatException e) {
+                        System.out.println("Usuario Invalido");
+                    }                    
                 }
-                
                 break;
                 
             case 3:
