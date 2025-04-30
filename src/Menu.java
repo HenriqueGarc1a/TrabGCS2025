@@ -66,9 +66,15 @@ public class Menu{
 
             }
         }
+    }
 
-
-
+    private ArrayList<Pedido> getPedidoPorUsuario(String userName){
+        for(Usuario u : funcionarios){
+            if(u.getNome().equalsIgnoreCase(userName)){
+                return u.getListaPedidosAprovados();
+            }
+        }
+        return null;
     }
 
     public void menuR(){
@@ -198,6 +204,17 @@ public class Menu{
                 in.next();
              break;
             case 6:
+                System.out.println("Informe o usuário desejado: ");
+                String user = in.next();
+                ArrayList<Pedido> userPedidos = getPedidoPorUsuario(user);
+                if(userPedidos != null){
+                    for(int i = 0; i < userPedidos.size(); i++){
+                        System.out.println(userPedidos.get(i).toString());
+                    }  
+                }else{
+                    System.out.println("O Usuário não tem pedidos");
+                }
+                  
              break;
             case 7:
              break;
