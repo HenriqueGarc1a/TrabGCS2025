@@ -64,4 +64,15 @@ public class Usuario {
            listaPedidosAprovados.remove(index); 
         }
     }
+
+    public String toString() {
+        return "Usuario {" +
+                "ID: " + id +
+                ", Nome: '" + nome + '\'' +
+                ", Iniciais: '" + iniciais + '\'' +
+                ", Admin: " + adm +
+                ", Departamento: " + func +
+                ", Pedidos aprovados: " + listaPedidosAprovados.size() +
+                '}';
+    }
 }
