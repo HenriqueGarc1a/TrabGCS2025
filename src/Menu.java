@@ -236,7 +236,8 @@ public class Menu{
             case 9:
              break;
             case 10:
-             break;
+                return;
+             
             default:
              System.out.println("Opção Invalida, por favor informe um numero valido");
              System.out.println();
