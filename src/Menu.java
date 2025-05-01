@@ -168,13 +168,16 @@ public class Menu{
                 mostraFunc();
                 String abacaxi="";
                 int k=0;
-                int asijo=0;
-                while (asijo<1) { 
+                
+                System.out.println("Digite a matricula do funcionario:");
+                while (true) { 
                     try {
                         abacaxi=in.nextLine();
+                        if(abacaxi.length() == 0)
+                            continue;
                         k=Integer.parseInt(abacaxi);
                         atual = funcionarios.get(k);
-                        asijo++;
+                        break;
                     } catch (NumberFormatException e) {
                         System.out.println("Usuario Invalido");
                     }                    
