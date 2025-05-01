@@ -101,6 +101,23 @@ public class Menu{
         }
     }
 
+    private void mostraPedidoEntreDatas(LocalDate date1, LocalDate date2){
+
+        for(int i = 0;i<funcionarios.size();i++){
+            
+            for(int j = 0;j<funcionarios.get(i).getListaPedidosAprovados().size();j++){
+
+                Pedido pedido = funcionarios.get(i).getListaPedidosAprovados().get(j);
+                LocalDate dataPedido = pedido.getData();
+                if ((dataPedido.isEqual(date1) || dataPedido.isAfter(date1)) &&
+                    (dataPedido.isEqual(date2) || dataPedido.isBefore(date2))) {
+                    System.out.println(pedido);
+                }
+
+            }
+        }
+    }
+
     private ArrayList<Pedido> getPedidoPorUsuario(String userName){
         for(Usuario u : funcionarios){
             if(u.getNome().equalsIgnoreCase(userName)){
@@ -247,11 +264,26 @@ public class Menu{
              break;
             case 4:
              break;
-            case 5:
-                clear();
-                mostraPedido();
-                in.next();
+             case 5:
+             clear();
+                System.out.println("Digite a data inicial (formato: yyyy-MM-dd): ");
+                String dataInicioStr = in.next();
+                System.out.println("Digite a data final (formato: yyyy-MM-dd): ");
+                String dataFimStr = in.next();
+            
+                try {
+                    LocalDate dataInicio = LocalDate.parse(dataInicioStr);
+                    LocalDate dataFim = LocalDate.parse(dataFimStr);
+                    mostraPedidoEntreDatas(dataInicio, dataFim);
+                } catch (Exception e) {
+                    System.out.println("Formato de data inválido! Use o formato yyyy-MM-dd.");
+                }
+            
+                System.out.println("Pressione Enter para continuar:");
+                in.nextLine(); 
+                in.nextLine(); 
              break;
+
             case 6:
                 System.out.println("Informe o usuário desejado: ");
                 String user;
