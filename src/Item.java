@@ -43,6 +43,16 @@ public class Item {
 
     }
 
+    public String toString() {
+        return "Item {" +
+                "Nome: '" + nome + '\'' +
+                ", Descrição: '" + def + '\'' +
+                ", Valor unitário: " + valor +
+                ", Quantidade: " + quant +
+                ", Total: " + total +
+                '}';
+    }
+
 
     
 }

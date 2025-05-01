@@ -114,55 +114,54 @@ public class Menu{
 
          switch(temp){
             case 1:
+                    clear();
+                    String nome;
                     double valor,quant;
                     valor = 0;
                     quant = 0;
-                    System.out.println(1);
-                    String nome = in.nextLine();
-                    System.out.println(2);
-                    int l=0;
-                    while(l<1){
+
+                    System.out.println("Informe o nome do Item:");
+                    do{
+                     
+                     nome = in.nextLine();
+
+                    }while (nome.length() == 0);
+
+                    System.out.println("Informe o valor do Item");
+                    
+                    while(true){
                     try {
                         String entrada =in.nextLine();
                         valor = Double.parseDouble(entrada);
-                        l++;
+                        break;
                     } catch (NumberFormatException e) {
                         System.out.println("Valor invalido, insira um numero correto");
                     }
                     }
-                    System.out.println(3);
-                    l=0;
-                    while(l<1){
+
+                    System.out.println("Informe a quantidade do item:");
+                    
+                    while(true){
                     try {
                         String entrada =in.nextLine();
                         quant = Double.parseDouble(entrada);
-                        l++;
+                        break;
                     } catch (NumberFormatException e) {
                         System.out.println("Quantidade invalida, insira um numero correto");
                     }
                     }
-                    System.out.println(4);
+
+                    System.out.println("Digite a definicao do Item");
                     String def = in.nextLine();
-                    int kjkj=0;
-                    int usuarioReq=0;
-                    Usuario abdais=null;
-                    while(kjkj<1){
-                        System.out.println("informe o usuario requisitante:");
-                        try {
-                         String entradaS = in.nextLine();
-                         usuarioReq = Integer.parseInt(entradaS);                            
-                        } catch (NumberFormatException e) {
-                            System.out.println("Usuario Invalido");
-                        }
-                      if(usuarioReq<funcionarios.size()){
-                        abdais= funcionarios.get(usuarioReq);
-                        kjkj++;
-                      }else{
-                        System.out.println("Usuario Invalido");
-                      }
-                    }
-                    addPedido(new Item(nome, valor, def, quant),abdais);
+                    
+                    addPedido(new Item(nome, valor, def, quant),atual);
+
+                    System.out.println("Pedido realizado com sucesso!");
+                    System.out.println("Digite algo para voltar ao menu!");
+                    in.next();
+
               break;
+
             case 2:
 
                 clear();
@@ -183,10 +182,24 @@ public class Menu{
                 break;
                 
             case 3:
+
+            clear();
+            
+            if(atual.getListaPedidosAprovados().size() ==0){
+                
+                System.out.println("Voce nao tem pedidos ativos");
+                System.out.println("digite algo para voltar ao menu");
+
+                in.next();
+                
+                break;
+
+            }
+
             System.out.println("Informe o pedido a ser removido:");
             int count = 1;
             for(int i = 0; i<(atual.getListaPedidosAprovados()).size(); i++){
-                System.out.println("\n"+count+"- "+((atual.getListaPedidosAprovados()).get(i)).getItems());
+                System.out.println("\n"+count+"- "+((atual.getListaPedidosAprovados()).get(i)).toString());
             }
             int deletado = in.nextInt()-1;
             if((atual.getListaPedidosAprovados()).get(deletado)!= null){

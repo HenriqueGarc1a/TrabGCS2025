@@ -14,6 +14,7 @@ class Pedido {
         this.status = Status.aberto;
         this.items = item;
         this.usuarioRequisitante = usuarioRequisitante;
+        this.departamento = usuarioRequisitante.getFunc();
 
     }
 
@@ -47,12 +48,17 @@ class Pedido {
         
     }
 
-    public String toString(){
-
-        return this.data.toString();
-
-
+    public String toString() {
+        return "Pedido {" +
+                "\n  Data de criação: " + data +
+                "\n  Data de conclusão: " + (dataconclusao != null ? dataconclusao : "Ainda não concluído") +
+                "\n  Status: " + status +
+                "\n  Departamento: " + (departamento != null ? departamento : "Não especificado") +
+                "\n  Usuario requisitante: " + (usuarioRequisitante != null ? usuarioRequisitante : "Nenhum") +
+                "\n  Item: " + (items != null ? items : "Nenhum") +
+                "\n}";
     }
+
     public Usuario getUsuarioRequisitante(){
         return this.usuarioRequisitante;
     }
