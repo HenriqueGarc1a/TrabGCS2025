@@ -1,6 +1,8 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Menu{
 
@@ -96,6 +98,25 @@ public class Menu{
             for(int j = 0;j<funcionarios.get(i).getListaPedidosAprovados().size();j++){
 
                 System.out.println(funcionarios.get(i).getListaPedidosAprovados().get(j));
+
+            }
+        }
+    }
+
+   
+
+     private void mostraPedidoPorDescricao(String busca){
+
+        Pattern pattern = Pattern.compile(Pattern.quote(busca), Pattern.CASE_INSENSITIVE);
+
+        for(int i = 0;i<funcionarios.size();i++){
+            
+            for(int j = 0;j<funcionarios.get(i).getListaPedidosAprovados().size();j++){
+
+        
+                Matcher matcher = pattern.matcher(funcionarios.get(i).getListaPedidosAprovados().get(j).getItems().getDef());
+                if(matcher.find())
+                    System.out.println(funcionarios.get(i).getListaPedidosAprovados().get(j).toString());
 
             }
         }
@@ -308,6 +329,20 @@ public class Menu{
                   
              break;
             case 7:
+                clear();
+                String busca = "";
+
+                System.out.println("Digite a def do Pedido:");
+
+                while (busca.length() == 0) {
+                    busca = in.nextLine();
+                }
+                System.out.println("Pedidos Encontrados:");
+                mostraPedidoPorDescricao(busca);
+
+                System.out.println("Digite algo para retornar:");
+                in.next();
+                
              break;
             case 8:
              break;
