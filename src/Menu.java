@@ -91,19 +91,6 @@ public class Menu{
 
     }
 
-    private void mostraPedido(){
-
-        for(int i = 0;i<funcionarios.size();i++){
-            
-            for(int j = 0;j<funcionarios.get(i).getListaPedidosAprovados().size();j++){
-
-                System.out.println(funcionarios.get(i).getListaPedidosAprovados().get(j));
-
-            }
-        }
-    }
-
-
      private void mostraPedidoPorDescricao(String busca){
 
         Pattern pattern = Pattern.compile(Pattern.quote(busca), Pattern.CASE_INSENSITIVE);
@@ -389,6 +376,8 @@ public class Menu{
              break;
             case 8:
 
+                clear();
+
                 ArrayList<Pedido> listafinal = new ArrayList<Pedido>();
                 ArrayList<Pedido> lista30Dias = new ArrayList<Pedido>();
 
@@ -415,13 +404,42 @@ public class Menu{
                     if(listafinal.get(i).getItems().getVal()>listafinal.get(maiorValor).getItems().getVal()){
                         maiorValor=i;
                     }
+
+                    if (listafinal.get(i).getData().isAfter(LocalDate.now().minusDays(30))) {
+                        lista30Dias.add(listafinal.get(i));
+                    }
                 }
                 
                 System.out.println("Numero de pedidos total: "+listafinal.size());
-                System.out.println("Numero de pedidos aprovados: "+aprovados+"\n "+((aprovados / (aprovados+reprovados)) * 100)+"%");
-                System.out.println("Numero de pedidos reprovados: "+reprovados+"\n "+((reprovados / (aprovados+reprovados)) * 100)+"%");
+                try {
+                    System.out.println("Numero de pedidos aprovados: "+aprovados+"\n "+((aprovados / (aprovados+reprovados)) * 100)+"%");
+                } catch (Exception e) {
+                    System.out.println("Numero de pedidos aprovados: "+aprovados+"\n "+((aprovados / (1)) * 100)+"%");
+                }
+
+                try {
+                    System.out.println("Numero de pedidos reprovados: "+reprovados+"\n "+((reprovados / (aprovados+reprovados)) * 100)+"%");   
+                } catch (Exception e) {
+                    System.out.println("Numero de pedidos reprovados: "+reprovados+"\n "+((reprovados / (1)) * 100)+"%");
+                }
+               
                 System.out.println("Pedido de maior valor = \n"+listafinal.get(maiorValor).toString());
+                if (lista30Dias.size() > 0) {
+                    System.out.println("\nPedidos realizados nos últimos 30 dias:");
+                    double somaTotal = 0;
+                    for (Pedido p : lista30Dias) {
+                        System.out.println(p.toString());
+                        somaTotal += p.getItems().getTotal();
+                    }
+                    double media = somaTotal / lista30Dias.size();
+                    System.out.printf("\nPreço médio dos pedidos dos últimos 30 dias: R$ %.2f\n", media);
+                } else {
+                    System.out.println("\nNão há pedidos realizados nos últimos 30 dias.");
+                }
                 
+                System.out.print("\nPressione Enter para voltar ao menu:");
+                in.next();
+
                 break;
             case 9:
              return;
