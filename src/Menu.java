@@ -388,7 +388,41 @@ public class Menu{
                 
              break;
             case 8:
-            break;
+
+                ArrayList<Pedido> listafinal = new ArrayList<Pedido>();
+                ArrayList<Pedido> lista30Dias = new ArrayList<Pedido>();
+
+                for(int i=0;i<funcionarios.size();i++){
+                    Usuario beta = funcionarios.get(i);
+                    ArrayList<Pedido> listatemporaria = beta.getListaPedidosAprovados();
+                
+                    for(int x=0;x<listatemporaria.size();x++){
+                        listafinal.add(listatemporaria.get(x));
+                    }
+                }
+
+                int aprovados = 0;
+                int reprovados = 0;
+                int maiorValor = 0;
+                
+                for(int i=0;i<listafinal.size();i++){
+                    if(listafinal.get(i).geStatus()==Status.aprovado){
+                        aprovados++;
+                    }else if(listafinal.get(i).geStatus()==Status.reprovado){
+                        reprovados++;
+                    }
+
+                    if(listafinal.get(i).getItems().getVal()>listafinal.get(maiorValor).getItems().getVal()){
+                        maiorValor=i;
+                    }
+                }
+                
+                System.out.println("Numero de pedidos total: "+listafinal.size());
+                System.out.println("Numero de pedidos aprovados: "+aprovados+"\n "+((aprovados / (aprovados+reprovados)) * 100)+"%");
+                System.out.println("Numero de pedidos reprovados: "+reprovados+"\n "+((reprovados / (aprovados+reprovados)) * 100)+"%");
+                System.out.println("Pedido de maior valor = \n"+listafinal.get(maiorValor).toString());
+                
+                break;
             case 9:
              return;
              
