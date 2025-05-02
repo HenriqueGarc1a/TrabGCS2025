@@ -103,7 +103,6 @@ public class Menu{
         }
     }
 
-   
 
      private void mostraPedidoPorDescricao(String busca){
 
@@ -282,7 +281,53 @@ public class Menu{
             }
              break;
             case 4:
-             break;
+
+            clear();
+
+            System.out.print("Informe o nome do usuário desejado: ");
+
+            String userr;
+            do {
+                userr = in.nextLine();
+            } while (userr.length() == 0);
+            
+            ArrayList<Pedido> userrPedidos = getPedidoPorUsuario(userr);
+            
+            if (userrPedidos != null) {
+                System.out.println("\nPedidos encontrados para o usuário \"" + userr + "\":");
+                for (int i = 0; i < userrPedidos.size(); i++) {
+                    System.out.println(i + " - " + userrPedidos.get(i).toString());
+                }
+            } else {
+                System.out.println("\nO usuário \"" + userr + "\" não possui pedidos.");
+                System.out.print("Pressione Enter para voltar ao menu...");
+                in.next();
+                break;
+            }
+            
+            System.out.print("\nInforme o número do pedido que deseja revisar: ");
+            int indice = in.nextInt();
+            in.nextLine();
+            
+            System.out.print("Deseja aprovar ou reprovar este pedido? (Digite A para aprovar ou R para reprovar): ");
+            String ap = "";
+            while (ap.length() == 0) {
+                ap = in.nextLine();
+            }
+            
+            if (ap.equals("A")) {
+                userrPedidos.get(indice).aprova();
+                System.out.println("Pedido aprovado com sucesso!");
+            } else {
+                userrPedidos.get(indice).reprova();
+                System.out.println("Pedido reprovado com sucesso!");
+            }
+            
+            System.out.print("Pressione Enter para voltar ao menu:");
+            in.nextLine();
+            
+            break;
+            
              case 5:
              clear();
                 System.out.println("Digite a data inicial (formato: yyyy-MM-dd): ");

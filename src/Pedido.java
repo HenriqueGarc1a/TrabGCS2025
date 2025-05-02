@@ -63,6 +63,18 @@ class Pedido {
         return this.usuarioRequisitante;
     }
 
+    public void reprova(){
+
+        this.status = Status.reprovado;
+
+    }
+
+    public void aprova(){
+
+        this.status = Status.aprovado;
+
+    }
+
 
 
 }
