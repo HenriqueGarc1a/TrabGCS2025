@@ -165,16 +165,14 @@ public class Menu{
          System.out.println("3-Remover um pedido existente(Somente Usuario Solicitante)");
          
          if(atual.getAdm()){
-         System.out.println("4-Aprovar ou Rejeitar pedidos(Somente Admin)");
+         System.out.println("4-Visualizar detalhes de um pedido para aprovar ou rejeitar pedidos(Somente Admin)");
          System.out.println("5-Listar pedidos entre duas datas(Somente Admin)");
          System.out.println("6-Buscar pedidos por Usuario solicitante(Somente Admin)");
          System.out.println("7-Buscar pedido por descrição de item(Somente Admin)");
-         System.out.println("8-Visualizar detalhes de um pedido(Somente Admin)");
-         System.out.println("9-Ver estatisticas (Somente Admin)");
-
+         System.out.println("8-Ver estatisticas (Somente Admin)");
          }
 
-         System.out.println("10-Fechar app");
+         System.out.println("9-Fechar app");
 
          if(in.hasNextInt()){
             temp = in.nextInt();
@@ -345,11 +343,9 @@ public class Menu{
                 
              break;
             case 8:
-             break;
+            break;
             case 9:
-             break;
-            case 10:
-                return;
+             return;
              
             default:
              System.out.println("Opção Invalida, por favor informe um numero valido");
